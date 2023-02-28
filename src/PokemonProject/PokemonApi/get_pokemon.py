@@ -17,7 +17,7 @@ def get_pokemon(req: func.HttpRequest, table_client: TableService) -> func.HttpR
     logging.info('Python HTTP trigger function processed a GET request for Pokemon entity.')
 
     # Retrieve the partition key and row key from the request URL
-    partition_key = req.route_params.get('partition_key')
+    partition_key = "pokemon"
     row_key = req.route_params.get('row_key')
 
     # Define the name of the table to use for the Pokemon entity

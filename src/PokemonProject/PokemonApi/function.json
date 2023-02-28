@@ -12,7 +12,7 @@
         "put",
         "delete"
       ],
-      "route": "PokemonApi/{partition_key}/{row_key}"
+      "route": "PokemonApi/{row_key?}"
     },
     {
       "type": "http",

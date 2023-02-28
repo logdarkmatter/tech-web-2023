@@ -37,7 +37,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return create_pokemon(req, pokemon, trainer)
     elif method == 'PUT':
         from .update_pokemon import update_pokemon
-        return update_pokemon(req, pokemon)
+        return update_pokemon(req, pokemon, trainer)
     elif method == 'DELETE':
         from .delete_pokemon import delete_pokemon
         return delete_pokemon(req, pokemon)

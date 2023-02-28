@@ -7,7 +7,7 @@ from azure.cosmosdb.table.tableservice import TableService
 def update_pokemon(req: func.HttpRequest, table_client: TableService, trainer_table_client: TableService) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a PUT request for Pokemon entity.')
 
-    partition_key = req.route_params.get('partition_key')
+    partition_key = "pokemon"
     pokemon_id = req.route_params.get('row_key')
 
     # Retrieve the JSON payload from the request body, if present
@@ -15,20 +15,24 @@ def update_pokemon(req: func.HttpRequest, table_client: TableService, trainer_ta
 
     # Define the name of the table to use for the Pokemon entity
     table_name = 'Pokemon'
-
+    trainer_table_name = 'Trainer'
+    
     # Retrieve the attributes from the request body
     name = req_body.get('name')
     weight = req_body.get('weight')
     height = req_body.get('height')
     trainer_id = req_body.get('trainer_id')
 
-    # Check that the trainer_id is a valid Trainer entity
-    trainer_entity = trainer_table_client.get()
-    if not any(entity for entity in trainer_entity if entity.RowKey == trainer_id):
-        return func.HttpResponse(f'Error: Invalid trainer_id specified', status_code=400)
-
     # Retrieve the existing entity from the table
     entity = table_client.get_entity(table_name, 'pokemon', pokemon_id)
+
+    # Check that the trainer_id is a valid Trainer entity
+    if trainer_id is None:
+        entity.trainer_id = None
+    else:
+        entities = trainer_table_client.query_entities(trainer_table_name, filter=f"RowKey eq '{trainer_id}'")
+        if len(entities.items) == 0:
+            return func.HttpResponse(f'Error: Invalid trainer_id specified', status_code=400)
 
     # Check that the name is unique if it has been changed
     if name is not None and name != entity.name:
