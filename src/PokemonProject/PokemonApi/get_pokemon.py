@@ -1,9 +1,19 @@
 import logging
 import json
 import azure.functions as func
+from azure.cosmosdb.table.tableservice import TableService
 
+import datetime
+import json
 
-def get_pokemon(req: func.HttpRequest, table_client: func.TableService) -> func.HttpResponse:
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, z):
+        if isinstance(z, datetime.datetime):
+            return (str(z))
+        else:
+            return super().default(z)
+
+def get_pokemon(req: func.HttpRequest, table_client: TableService) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a GET request for Pokemon entity.')
 
     # Retrieve the partition key and row key from the request URL
@@ -17,13 +27,13 @@ def get_pokemon(req: func.HttpRequest, table_client: func.TableService) -> func.
         # Retrieve a single Pokemon entity
         try:
             entity = table_client.get_entity(table_name, partition_key, row_key)
-            return func.HttpResponse(json.dumps(entity), status_code=200)
+            return func.HttpResponse(json.dumps(entity, cls=DateTimeEncoder), status_code=200)
         except Exception as e:
             return func.HttpResponse(f'Error: {str(e)}', status_code=500)
     else:
         # Retrieve a list of all Pokemon entities
         try:
             entities = table_client.query_entities(table_name)
-            return func.HttpResponse(json.dumps(entities), status_code=200)
+            return func.HttpResponse(json.dumps(entities, cls=DateTimeEncoder), status_code=200)
         except Exception as e:
             return func.HttpResponse(f'Error: {str(e)}', status_code=500)

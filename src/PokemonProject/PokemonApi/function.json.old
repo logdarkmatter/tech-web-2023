@@ -1,0 +1,40 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "pokemon",
+      "type": "table",
+      "tableName": "Pokemon",
+      "partitionKey": "name",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "name": "trainer",
+      "type": "table",
+      "tableName": "Trainer",
+      "partitionKey": "name",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "Anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post",
+        "put",
+        "delete"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
