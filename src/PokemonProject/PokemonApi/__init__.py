@@ -15,6 +15,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 #def main(req: func.HttpRequest, pokemon: TableService, trainer: TableService) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
+    #TODO: Read from configuration
     mykey = ""
 
     pokemon = TableService(account_name='tecweb2023stg', account_key=mykey)
@@ -22,11 +23,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # Retrieve the HTTP method from the request
     method = req.method
-
-    if False:
-        partition_key = req.route_params.get('partition_key')
-        row_key = req.route_params.get('row_key')
-        return func.HttpResponse(f"Hello, {partition_key}/{row_key}. This HTTP triggered function executed successfully.")
 
     # Call the appropriate function for the HTTP method
     if method == 'GET':
