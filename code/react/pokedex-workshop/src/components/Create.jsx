@@ -130,7 +130,6 @@ function Create() {
           <Form.Select aria-label="Default select example" onChange={handleChange} name='pokemonType' value={pokemonType}>
             <option value="">--select a type--</option>
             <option value="normal">Normal</option>
-            <option value="normal">Normal</option>
             <option value="fire">Fire</option>
             <option value="water">Water</option>
             <option value="grass">Grass</option>
