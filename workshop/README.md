@@ -26,7 +26,9 @@ In this workshop you will be able to build a back-end using **Python** and deplo
     * Python.
 
 **PRE-REQUISITES** ✔️:
-* **Registration** Please fill this [form](https://forms.gle/SqbcLbLPomcdubqZ8) with your University details in order to register in the workshop and so we can send you the invitation links for the Azure Portal/Subscriptions;
+* **Workshop Registration** Please fill this [form](https://forms.gle/SqbcLbLPomcdubqZ8) with your University details in order to register in the workshop and so we can send you the invitation links for the Azure Portal/Subscriptions;
+* **Azure for students account creation**: Create a [Azure for Students](https://azure.microsoft.com/en-us/free/students/) account;
+* **Accept the invitation** sent by the instructors to join to workshop subscription and tenant;
 * **Configure your environment**: Before you begin, make sure that you have the following requirements in place:
     * An Azure account with an active subscription. Create an account for free with the invitation link that you will receive from the instructors.
     * [NodeJS](https://nodejs.org/en/);
@@ -40,6 +42,25 @@ In this workshop you will be able to build a back-end using **Python** and deplo
 
 # Let's start with some theory 🤓
 * Let's first start with some [slides](../teoria/Eng.%20Software%20-%20Arquiteturas%20de%20Software.pdf)
+
+# Tech Glossary 📖
+|    Term     |
+|-------------|
+|**[Azure](https://learn.microsoft.com/en-us/training/azure/)**|
+|[Azure Misc](https://learn.microsoft.com/en-us/azure/azure-glossary-cloud-terminology)|
+|[Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)|
+|[Storage Account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)|
+|[Table Storage](https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview)|
+|[Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)|
+|[Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=net)|
+|[App Service plan](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans)|
+||
+|**[Pyhton](https://www.w3schools.com/python/)**|
+||
+|**[React](https://reactjs.org/docs/getting-started.html)**|
+||
+|**[npm](https://docs.npmjs.com/cli/v9/commands)**|
+
 
 # Project 🛠️
 
@@ -79,3 +100,11 @@ The main porpuse is to build a web based application using moderns technologies 
 ![image](./images/hld-arch.png)
 
 # Exercise | Part 1 | Create or first Function App ⚡
+
+**What are Azure functions?**
+
+Functions allow to run serverless code, code that you run only when you need it and that doesn’t need a whole infrastructure to live in. You can decide that a function is triggered when hitting an HTTP endpoint, or when new files are added into a blob storage for instance. It might always perform the same task, or it might do something different depending on your inputs. Basically, you can write code that does (almost) anything you can think of and host it as an Azure Function.
+
+It’s really convenient and as a bonus, it’s cheap: you pay a fraction of a dollar for a million requests and the first million is free — that is unless you decide to go for the hosted plan (like a regular web app) and not the consumption plan.
+
+For more information on Azure functions, [take a look at the documentation]((https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)).
