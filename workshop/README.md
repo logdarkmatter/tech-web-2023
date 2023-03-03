@@ -74,8 +74,8 @@ The main porpuse is to build a web based application using moderns technologies 
 
 ![image](./images/hhhld-arch.PNG)
 
-![image](./images/hhld-arch.PNG)
+![image](./images/hhld-arch.png)
 
-![image](./images/hld-arch.PNG)
+![image](./images/hld-arch.png)
 
 # Exercise | Part 1 | Create or first Function App ⚡
