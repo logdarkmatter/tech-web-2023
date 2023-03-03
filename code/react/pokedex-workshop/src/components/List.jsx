@@ -52,7 +52,6 @@ const List = () => {
 
 
     const tableRows = pokemonList.map((entry, index) => {
-        console.log(entry);
         const { PokemonName, PokedexNumber, PokemonColor, PokemonType, PokemonAttacks } = entry;
         return (
             <tr key={index}>
