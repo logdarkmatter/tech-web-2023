@@ -7,7 +7,7 @@ class List extends Component {
     };
     
     componentDidMount() {
-        const url = "https://custompokedex.azurewebsites.net/api/pokedex/getall";
+        const url = "https://custompokedex.azurewebsites.net/api/pokedex";
 
         fetch(url)
             .then(result => result.json())

@@ -16,11 +16,13 @@ class App extends Component {
       <div className="App">
         <Router>
           <Header />
-          <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route path='/list' element={<List/>} />
-            <Route path='/create' element={<Create />} />
-          </Routes>
+          <div className="container">
+            <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route path='/list' element={<List/>} />
+              <Route path='/create' element={<Create />} />
+            </Routes>
+          </div>
         </Router>
       </div>
     );
