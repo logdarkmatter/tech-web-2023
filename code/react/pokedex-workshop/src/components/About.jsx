@@ -11,7 +11,7 @@ const About = () => {
         <p className="about-content">Our app offers a wide range of customization options, allowing you to create a pokémon that is officially unique. You can adjust your Pokémon's appearance, choose its type, define its strengths and weaknesses, and even create a story unique to it.</p>
         <p className="about-content">Furthermore, our Pokémon breeding app is easy to use and offers an intuitive interface. Even if you're a beginner, you'll be able to create your own unique Pokémon without any difficulties. With our app, creating your custom Pokémon is a fun and easy task.</p>
         <p className="about-content">So, if you're a Pokémon fan who's always dreamed of creating your own unique character, access our Pokémon Breeding app now. With it, you can bring your imagination to life and create the Pokémon of your dreams!</p>   
-        <img src={pikachuRunner} width="120" height="auto" style={{ justifySelf: "center", position: "fixed", bottom: "55px" }} ></img>
+        <img src={pikachuRunner} width="120" height="auto" style={{ justifySelf: "center", position: "fixed", bottom: "55px", zIndex: 0 }} ></img>
       </div>
     </div>
   );
