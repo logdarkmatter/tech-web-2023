@@ -107,6 +107,7 @@ const List = () => {
 
   return (
     <>
+    <h1 className="page-title">Pokémon List</h1>
       <Table striped bordered hover>
         <TableHeader />
         <tbody>{tableRows}</tbody>

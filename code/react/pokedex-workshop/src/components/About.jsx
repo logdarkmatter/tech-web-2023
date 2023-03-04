@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about-page">
-        <h1 className="about-title">About PokéManager</h1>
+        <h1 className="page-title">About PokéManager</h1>
         <p className="about-content">With the help of our app, you can create your custom pokémon in just a few steps. You can choose the type of pokémon, select special abilities, customize colors, name, and much more.</p>
         <p className="about-content">Our team of experts work tirelessly to provide you with the best experience possible.</p>
         <p className="about-content">Our app offers a wide range of customization options, allowing you to create a pokémon that is officially unique. You can adjust your Pokémon's appearance, choose its type, define its strengths and weaknesses, and even create a story unique to it.</p>
