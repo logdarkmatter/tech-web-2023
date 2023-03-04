@@ -27,14 +27,23 @@
   align-items: center;
 }
 
-.NavLink {
+.nav-link {
   align-self: center;
-  padding-right: 20px !important;
-  padding-left: 20px !important;
+  padding-right: 40px !important;
+  padding-left: 40px !important;
 }
-.NavLink.active {
-  font-weight: bold;
-  color: #61dafb;
+
+.navbar-custom .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-custom .nav-link.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+.navbar-custom .nav-link:hover {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .App-logo {
