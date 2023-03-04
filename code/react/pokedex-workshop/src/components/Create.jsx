@@ -203,7 +203,7 @@ function Create() {
           </Form.Group>
         </Row>
         <div style={{ marginTop: "100px" }}>
-          <Button className="submit-button" type="submit">
+          <Button className="custom-button submit-button" type="submit">
             Submit form
           </Button>
         </div>
