@@ -107,4 +107,94 @@ Functions allow to run serverless code, code that you run only when you need it 
 
 It’s really convenient and as a bonus, it’s cheap: you pay a fraction of a dollar for a million requests and the first million is free — that is unless you decide to go for the hosted plan (like a regular web app) and not the consumption plan.
 
-For more information on Azure functions, [take a look at the documentation]((https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)).
+For more information on Azure functions, [take a look at the documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview).
+
+**1 - Sign in to Azure**
+Before you can publish your app, you must sign in to Azure.
+1. If you aren't already signed in, choose the Azure icon in the Activity bar. Then in the Resources area, choose Sign in to Azure....
+    * ![image](./images/sign-in-azure.png)
+    * If you're already signed in and can see your existing subscriptions, go to the next section. If you don't yet have an Azure account, choose Create and Azure Account.... Students can choose Create and Azure for Students Account....
+2. When prompted in the browser, choose your Azure account and sign in using your Azure account credentials. If you create a new account, you can sign in after your account is created.
+3. After you've successfully signed in, you can close the new browser window. The subscriptions that belong to your Azure account are displayed in the sidebar.
+4. All the resources that belong to your subscription will be shown on your side nav under the subscription tree list.
+    * ![image](./images/azure-resources.PNG).
+
+**2 - Create your first HTTP trigger function**
+1. In VS Code navigate to the Azure extension view (Azure icon in the left sidebar);
+2. On the **workspace** section, select *Create function*;
+3. Choose **Python** as the programming language and afterwards select your local Python installation;
+4. Choose **HttpTrigger** as the trigger mode for your function;
+5. Set **GetPokedex** as the name of your first function;
+6. Set Authorization Level to **Anonymous**;
+7. Navigate to the *explorer* view in the VSCode to see the function code  
+
+**3 - Code and test your function** 
+* One-time configuration:
+    1. Storage Account: 
+        * In the Azure Portal navigate to your Storage Account;
+        * Go to Tables and select *Table +*.
+        * Set the table name to **Pokedex**;
+        * To view the records in the database. In the same storage account navigate *Storage Browser > Tables > Pokedex*;
+    2. Python dependencies:
+        * Add the following dependencies separate by paragraphs to your *requirements.txt* file in the explorer view:
+            * `azure-functions azure.data.tables schema`
+            * **Glossary**
+                * [azure-functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level&pivots=python-mode-configuration);
+                * [Azure Data tables](https://learn.microsoft.com/en-us/python/api/overview/azure/data-tables-readme?view=azure-python);
+                * [azure.core.exceptions](https://learn.microsoft.com/en-us/python/api/azure-core/azure.core.exceptions?view=azure-python);
+                * [schema](https://pypi.org/project/schema/).
+        * In VSCode go to Terminal > New Terminal;
+        * Run the following command: `pip install -r requirements.txt`. (**Note**: Make sure your command line path is in the same directory as your *requirements.txt* file);
+    3. Local Settings:
+        * Open the file `local.settings.json`
+        * Change `"AzureWebJobsStorage": ""` to `AzureWebJobsStorage": "DefaultEndpointsProtocol=..."` The value is defined in you Function App > Configuration > AzureWebJobsStorage > Copy the value string to the json file and save;
+
+* Code your new function:
+    1. In the *explorer* view of the VSCode open the folder with the name **GetPokedex**;
+    2. Open `__init__.py` file;
+    3. Start coding to the desired outcome, in this case to get all the Pokemons in Pokedex table. **Note**  - Please follow the Datamodel stated in the point above;
+    4. To run and test locally press F5.
+
+```
+import logging
+import os
+import json
+
+import azure.functions as func
+from azure.data.tables import TableServiceClient
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    table_service_client  = TableServiceClient.from_connection_string(conn_str= os.environ["AzureWebJobsStorage"])
+    table_client = table_service_client.get_table_client(table_name="REPLACE WITH THE TABLE NAME")
+    entities = table_client.list_entities()
+    pokedex = "CREATE A NEW LIST IN PYTHON"
+    //Create a loop and interate the entities variable list and append the results to the new pokedex list
+       pokedex.append({
+        'PokemonName': entity['PartitionKey'],
+        'PokedexNumber': COMPLETE MISSING CODE
+        'PokemonType': COMPLETE MISSING CODE
+        COMPLETE MISSING CODE: entity['PartitionKey'],
+        COMPLETE MISSING CODE: entity['PokemonAttacks'] if 'PokemonAttacks' in entity else []
+       })
+
+    return func.HttpResponse(json.dumps(pokedex))
+
+```
+
+**4 - Deploy to Azure**
+1. In VS Code navigate to the Azure extension view (Azure icon in the left sidebar);
+2. On the **workspace** section, select *Deploy > Deploy to Function App*;
+3. On the dropdown selection **YOUR** function app (**Note**: This action will override all the data that is on your remote directory. Local rules the HEAD);
+* ![image](./images/deploy-to-azure.png).
+
+**5 - Create the remaining CRUD's**
+* Repeat the process from point 2 onwards and create the remaining API's with the following names:
+    * CreatePokemon - **Inserts** one Pokemon into the table of records - Type: POST;
+    * DeletePokemon - **Deletes** one Pokemon record by 'pokemonName' - Type: DELETE;
+    * GetPokemonById - **Get** one Pokemon record by 'pokemonName' - Type: GET;
+    * UpdatePokemon - **Updates** one Pokemon in the table of records - Type: POST.
+
+
+
