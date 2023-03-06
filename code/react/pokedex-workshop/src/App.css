@@ -55,6 +55,8 @@
   height: 15vmin;
 }
 
+.Pokemons { }
+
 .about-page {
   color: #1B2B49;
   display: grid;
@@ -80,6 +82,14 @@
   font-size: 20px;
   font-family: 'Press Start 2P', cursive;
   z-index: 1;
+}
+
+.pikachuRunner {
+  z-index: 0;
+}
+
+.center-image {
+  display: flex;
 }
 
 .pokemon-list {

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from "framer-motion"
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -16,7 +16,7 @@ const Home = () => {
     const [shouldAnimate, setShouldAnimate] = useState(false); // adiciona estado para controlar animação
     const animation = {
         scale: 1.1, // aumenta a escala do componente em 10%
-        rotate: [-10, 10, -10,  -20, 20, -20, -30, 30, -30, 0], // valores de rotação para a animação
+        rotate: [0, -10, 10, -10, -20, 20, -20, -30, 30, -30, 0], // valores de rotação para a animação
         transition: { duration: 1.0 } // duração da animação
     };
 

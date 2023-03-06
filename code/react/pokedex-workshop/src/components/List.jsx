@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-import pokeball from "../assets/pokeball.png";
+import Pokemons from "../assets/fourPokemons.png";
 import "../App.css";
 import Modal from "./Modal";
 
@@ -17,10 +17,8 @@ const List = () => {
   const [pokemonToDelete, setPokemonToDelete] = useState("");
   const hoverAnimation = {
     scale: 1.1, // aumenta a escala do componente em 10%
-    rotate: [-10, 10, -10, 0, -20, 20, -20, 0], // valores de rotação para a animação
     transition: { duration: 0.5 }, // duração da animação
   };
-
   const tapAnimation = {
     scale: 0.9, // diminui a escala do componente em 10%
     transition: { duration: 0.2 }, // duração da animação
@@ -107,7 +105,7 @@ const List = () => {
 
   return (
     <>
-    <h1 className="page-title">Pokémon List</h1>
+      <h1 className="page-title">Pokémon List</h1>
       <Table className="press-start-table" striped bordered hover>
         <TableHeader />
         <tbody>{tableRows}</tbody>
@@ -128,12 +126,9 @@ const List = () => {
             <motion.img
               whileHover={hoverAnimation}
               whileTap={tapAnimation}
-              src={pokeball}
-              alt="Pokeball"
-              className="Pokeball"
-              style={{
-                marginTop: "20px",
-              }}
+              src={Pokemons}
+              alt="Pokemons"
+              className="Pokemons"
             />
           </Col>
         </Row>
