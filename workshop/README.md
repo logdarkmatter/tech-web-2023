@@ -198,3 +198,22 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
 
+# Exercise | Part 2 | Deploy your React Application into Azure Blob Storage 🐱‍💻
+
+1. **Get the build files from your App**
+* On your project just run the command “npm run build” and this will create a new folder called “build”. These are the static files that we will need to upload into Blob Storage.
+
+2. **Configure your storage account**
+* In the Azure portal navigate to your storage account and go to the tab "Static Website" select **"Enable"** and **don’t forget to save it.**. *This option is only avaliable for storage account StorageV2 (general purpose v2), so if you have a lower version please upgrage*
+* ![image](./images/sa-activate-static-web.png).
+
+3. **Upload the files**
+* Click on **“$web”** and then “Upload”. You can now drag and drop all the files on the build folder previously created. In order to upload the folders, we need to go one by one. To do that just click on “Advance” and then on “Upload into folder” please insert the folder path as it is on the build folder. You have an example on the prints below for the folder “static\css”. Then drag and drop the files of that folder and save it.
+* ![image](./images/sa-web-static.png).
+* ![image](./images/sa-web-static-advance.png).
+
+4. **Select the root file**
+* Just add the `index.html` file as the root file and save it. Hold on a minute and you are ready to go. You can try now open your App in the given URL (Primary Endpoint).
+* ![image](./images/sa-root-static-web.png).
+
+
